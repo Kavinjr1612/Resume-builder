@@ -140,6 +140,44 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-display text-center mb-8 sm:mb-12">
+            Perfect for Students & Freshers
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="flex items-start space-x-4">
+              <div className="bg-green-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
+                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
+              </div>
+              <div>
+                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">Student-Friendly</h4>
+                <p className="text-slate-600 text-sm sm:text-base">Designed specifically for college students and recent graduates with limited work experience</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="bg-blue-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
+                <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+              </div>
+              <div>
+                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">Quick & Easy</h4>
+                <p className="text-slate-600 text-sm sm:text-base">Create a professional resume in just 2-3 minutes without any design skills required</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4 sm:col-span-2 lg:col-span-1">
+              <div className="bg-purple-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+              </div>
+              <div>
+                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">ATS Optimized</h4>
+                <p className="text-slate-600 text-sm sm:text-base">Our templates are optimized for Applicant Tracking Systems used by most companies</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-4xl mx-auto">
@@ -178,44 +216,6 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
         </div>
       </section>
 
-
-      {/* Benefits Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-display text-center mb-8 sm:mb-12">
-            Perfect for Students & Freshers
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="flex items-start space-x-4">
-              <div className="bg-green-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
-                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
-              </div>
-              <div>
-                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">Student-Friendly</h4>
-                <p className="text-slate-600 text-sm sm:text-base">Designed specifically for college students and recent graduates with limited work experience</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="bg-blue-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
-                <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
-              </div>
-              <div>
-                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">Quick & Easy</h4>
-                <p className="text-slate-600 text-sm sm:text-base">Create a professional resume in just 2-3 minutes without any design skills required</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4 sm:col-span-2 lg:col-span-1">
-              <div className="bg-purple-100 p-2 sm:p-3 rounded-2xl flex-shrink-0">
-                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
-              </div>
-              <div>
-                <h4 className="text-base sm:text-lg font-semibold text-slate-900 font-display mb-2">ATS Optimized</h4>
-                <p className="text-slate-600 text-sm sm:text-base">Our templates are optimized for Applicant Tracking Systems used by most companies</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Blog Section */}
       <div id="blog">
