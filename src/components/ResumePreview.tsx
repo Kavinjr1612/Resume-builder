@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ResumeData } from '../types/resume';
-import { ArrowLeft, Download, Edit2, Eye, Layout, CheckCircle, Star } from 'lucide-react';
+import { ArrowLeft, Download, Edit2, Eye, Layout, CheckCircle, Star, FileText, Briefcase, Award, AlignLeft } from 'lucide-react';
 import { generatePDF } from '../utils/pdfGenerator';
 import { trackResumeEvents } from '../utils/analytics';
 import { 
@@ -62,6 +62,19 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
       alert('Failed to download PDF. Please try again.');
     } finally {
       setIsDownloading(false);
+    }
+  };
+
+  const getTemplateStyle = (id: string) => {
+    switch(id) {
+      case 'fresher-modern': return { icon: <Layout className="w-10 h-10 text-blue-500 mb-2" />, bg: 'bg-gradient-to-br from-blue-50 to-blue-100', border: 'border-blue-200' };
+      case 'fresher-classic': return { icon: <FileText className="w-10 h-10 text-gray-600 mb-2" />, bg: 'bg-gradient-to-br from-gray-100 to-gray-200', border: 'border-gray-300' };
+      case 'intermediate-creative': return { icon: <Star className="w-10 h-10 text-teal-500 mb-2" />, bg: 'bg-gradient-to-br from-teal-50 to-teal-100', border: 'border-teal-200' };
+      case 'intermediate-professional': return { icon: <Briefcase className="w-10 h-10 text-indigo-500 mb-2" />, bg: 'bg-gradient-to-br from-indigo-50 to-indigo-100', border: 'border-indigo-200' };
+      case 'experienced-executive': return { icon: <Award className="w-10 h-10 text-slate-700 mb-2" />, bg: 'bg-gradient-to-br from-slate-100 to-slate-200', border: 'border-slate-300' };
+      case 'experienced-minimal': return { icon: <AlignLeft className="w-10 h-10 text-gray-500 mb-2" />, bg: 'bg-gradient-to-br from-gray-50 to-gray-100', border: 'border-gray-200' };
+      case 'boxed-template': return { icon: <Layout className="w-10 h-10 text-blue-600 mb-2" />, bg: 'bg-gradient-to-br from-blue-50 to-cyan-50', border: 'border-blue-200' };
+      default: return { icon: <FileText className="w-10 h-10 text-gray-500 mb-2" />, bg: 'bg-gray-50', border: 'border-gray-200' };
     }
   };
 
@@ -162,8 +175,9 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
                         : 'border-transparent bg-gray-50 hover:bg-gray-100 hover:border-gray-200'
                     }`}
                   >
-                    <div className="relative aspect-[1/1.2] w-full rounded-lg overflow-hidden border border-gray-200 mb-2 bg-white">
-                      <img src={template.preview} alt={template.name} className="w-full h-full object-cover opacity-80" />
+                    <div className={`relative aspect-[1/1.2] w-full rounded-lg overflow-hidden border ${getTemplateStyle(template.id).border} ${getTemplateStyle(template.id).bg} mb-2 flex flex-col items-center justify-center`}>
+                      {getTemplateStyle(template.id).icon}
+                      <span className="text-xs font-bold text-gray-700 text-center px-2">{template.name}</span>
                       {selectedTemplate === template.id && (
                         <div className="absolute top-2 right-2 bg-blue-600 text-white rounded-full p-1 shadow-md">
                           <CheckCircle className="h-4 w-4" />
@@ -194,8 +208,8 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
                         : 'border-transparent bg-gray-50 hover:bg-gray-100'
                     }`}
                   >
-                    <div className="aspect-[1/1.2] w-full rounded border border-gray-200 mb-1 overflow-hidden bg-white">
-                      <img src={template.preview} alt={template.name} className="w-full h-full object-cover opacity-70" />
+                    <div className={`aspect-[1/1.2] w-full rounded border ${getTemplateStyle(template.id).border} ${getTemplateStyle(template.id).bg} mb-1 flex flex-col items-center justify-center`}>
+                      {React.cloneElement(getTemplateStyle(template.id).icon, { className: "w-6 h-6 mb-1 opacity-70" })}
                     </div>
                     <p className="text-center text-xs font-medium text-gray-600 truncate px-1">
                       {template.name}
