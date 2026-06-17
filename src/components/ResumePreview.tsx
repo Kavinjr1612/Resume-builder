@@ -79,226 +79,148 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50 flex flex-col md:flex-row font-sans">
+    <div className="h-screen bg-gray-50/50 flex flex-col font-sans overflow-hidden">
       
-      {/* LEFT SIDEBAR */}
-      <div className="w-full md:w-[320px] lg:w-[380px] flex-shrink-0 bg-transparent p-4 lg:p-6 overflow-y-auto space-y-6 border-r border-gray-200">
-        
-        {/* Smart Template Selection Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="bg-teal-700 text-white p-5">
-            <h2 className="text-base font-bold flex items-center gap-2 mb-1">
-              <Lightbulb className="w-5 h-5" />
-              Smart Template Selection
-            </h2>
-            <p className="text-xs text-teal-100 opacity-90 leading-relaxed">
-              Templates optimized for {userLevel === 'fresher' ? 'fresh graduates' : 'professionals'}
-            </p>
-          </div>
-          
-          <div className="p-4 lg:p-5">
-            {/* Detected Profile */}
-            <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-5">
-              <h3 className="text-sm font-bold text-blue-800 flex items-center gap-2 mb-1.5">
-                <CheckCircle className="w-4 h-4 text-blue-600" />
-                Detected Profile: {getProfileTitle()}
-              </h3>
-              <p className="text-xs text-blue-600/80 leading-relaxed">
-                {getProfileDescription()}
-              </p>
-            </div>
-
-            {/* Template List */}
-            <div className="space-y-3 mb-4">
-              {visibleTemplates.map(template => (
-                <button
-                  key={template.id}
-                  onClick={() => handleTemplateChange(template.id)}
-                  className={`w-full text-left p-3.5 rounded-lg flex justify-between items-center transition-all ${
-                    selectedTemplate === template.id
-                      ? 'bg-teal-700 text-white shadow-md'
-                      : 'bg-gray-50 text-gray-700 border border-gray-100 hover:bg-gray-100 hover:border-gray-200'
-                  }`}
-                >
-                  <div>
-                    <div className={`text-sm font-bold ${selectedTemplate === template.id ? 'text-white' : 'text-gray-900'}`}>
-                      {template.name}
-                    </div>
-                    <div className={`text-xs mt-0.5 flex items-center gap-1.5 ${selectedTemplate === template.id ? 'text-teal-200' : 'text-gray-500'}`}>
-                      <FileText className="w-3.5 h-3.5" />
-                      {template.category.charAt(0).toUpperCase() + template.category.slice(1)}
-                    </div>
-                  </div>
-                  {template.recommended && (
-                    <Star className={`w-4 h-4 ${selectedTemplate === template.id ? 'text-yellow-400 fill-yellow-400' : 'text-gray-400'}`} />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Show All Toggle */}
-            {!showAllTemplates && (
-              <button 
-                onClick={() => setShowAllTemplates(true)}
-                className="w-full text-center text-sm font-semibold text-blue-600 hover:text-blue-800 py-2 mb-4"
-              >
-                Show All Templates
-              </button>
-            )}
-
-            {/* Photo Toggle */}
-            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 mb-4">
-              <input
-                type="checkbox"
-                checked={includePhoto}
-                onChange={(e) => setIncludePhoto(e.target.checked)}
-                className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-              />
+      {/* TOP HEADER (FULL WIDTH) */}
+      <div className="bg-white border-b border-gray-200 px-6 py-4 flex-shrink-0 z-20 shadow-sm relative">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto w-full">
+          <div className="flex items-center gap-4">
+            <button onClick={onBack} className="text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5">
+              <ArrowLeft className="w-4 h-4" /> Back to Home
+            </button>
+            <div className="w-px h-8 bg-gray-200 hidden sm:block"></div>
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-600 text-white p-1.5 rounded-lg">
+                <Eye className="w-5 h-5" />
+              </div>
               <div>
-                <label className="text-sm font-bold text-gray-800 cursor-pointer">Include photo</label>
-                <p className="text-xs text-gray-500 mt-0.5">Available for this template</p>
+                <h1 className="text-lg font-black text-gray-900 leading-tight">Resume Preview</h1>
+                <p className="text-xs text-gray-500 font-medium">Your professional resume is ready!</p>
               </div>
             </div>
-
-            {/* Template Info Text */}
-            <div className="bg-blue-50/50 p-4 rounded-lg text-xs leading-relaxed text-blue-800 border border-blue-100/50">
-              <span className="font-bold">{currentTemplate.name}: </span>
-              A perfectly structured design optimized for your career level and industry standards.
-            </div>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <button onClick={onEdit} className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-bold py-2.5 px-5 rounded-lg flex items-center gap-2 transition-colors">
+              <Edit2 className="w-4 h-4" /> Edit Resume
+            </button>
+            <button 
+              onClick={handleDownloadPDF}
+              disabled={isDownloading}
+              className="bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 shadow-md transition-colors"
+            >
+              <Download className="w-4 h-4" /> {isDownloading ? 'Downloading...' : 'Download PDF'}
+            </button>
           </div>
         </div>
-
-        {/* PDF Quality Guarantee Card */}
-        <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-5 shadow-sm">
-          <div className="bg-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center mb-4">
-            <FileText className="w-5 h-5 text-white" />
-          </div>
-          <h3 className="text-sm font-bold text-indigo-900 mb-3">PDF Quality Guarantee</h3>
-          <p className="text-xs text-indigo-800/80 leading-relaxed mb-4">
-            The preview above is <strong className="text-indigo-900">scaled for browser viewing</strong>. Your downloaded PDF will be in <strong className="text-indigo-900">perfect A4 format</strong> with professional spacing, fonts, and layout.
-          </p>
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center gap-2 text-xs text-indigo-800 font-medium">
-              <CheckCircle className="w-4 h-4 text-emerald-500" /> A4 Standard Format (210×297mm)
-            </div>
-            <div className="flex items-center gap-2 text-xs text-indigo-800 font-medium">
-              <CheckCircle className="w-4 h-4 text-blue-500" /> ATS-Compatible Structure
-            </div>
-            <div className="flex items-center gap-2 text-xs text-indigo-800 font-medium">
-              <Star className="w-4 h-4 text-purple-500" /> High-Resolution Output
-            </div>
-          </div>
-          <div className="bg-indigo-600 text-white text-xs font-bold p-3 rounded-lg flex items-start gap-2 shadow-sm">
-            <Lightbulb className="w-4 h-4 flex-shrink-0 text-yellow-300" />
-            <span>Pro Tip: Download and review your PDF for the true professional format</span>
-          </div>
+        
+        {/* Sub-header Badges */}
+        <div className="flex flex-wrap items-center gap-3 mt-4 max-w-7xl mx-auto w-full">
+          <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
+            <CheckCircle className="w-3.5 h-3.5" /> Resume Complete
+          </span>
+          <span className="flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full">
+            <CheckCircle className="w-3.5 h-3.5" /> ATS Optimized
+          </span>
+          <span className="flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-3 py-1.5 rounded-full">
+            <CheckCircle className="w-3.5 h-3.5" /> {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)}-Optimized
+          </span>
+          <span className="flex items-center gap-1.5 text-xs font-bold text-yellow-700 bg-yellow-50 border border-yellow-200 px-3 py-1.5 rounded-full">
+            <FileText className="w-3.5 h-3.5" /> PDF Ready
+          </span>
         </div>
-
-        {/* Ready to Apply Card */}
-        <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5 text-center shadow-sm">
-          <div className="bg-emerald-500 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-            <Download className="w-6 h-6 text-white" />
-          </div>
-          <h3 className="text-base font-bold text-emerald-900 mb-2">Ready to Apply?</h3>
-          <p className="text-xs text-emerald-800/80 leading-relaxed px-2 mb-5">
-            Download your professional resume as a high-quality PDF, perfectly formatted for job applications.
-          </p>
-          <button
-            onClick={handleDownloadPDF}
-            disabled={isDownloading}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow-md transition-colors flex items-center justify-center gap-2 mb-4"
-          >
-            <Download className="w-5 h-5" />
-            {isDownloading ? 'Generating...' : 'Download Free PDF'}
-          </button>
-          <div className="flex justify-center gap-4 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
-            <span className="flex items-center gap-1"><Check className="w-3 h-3" /> 100% Free</span>
-            <span className="flex items-center gap-1"><Check className="w-3 h-3" /> No Watermarks</span>
-            <span className="flex items-center gap-1"><Check className="w-3 h-3" /> High Quality</span>
-          </div>
-        </div>
-
-        {/* Level Specific Tips */}
-        <div className="bg-white border border-purple-100 rounded-xl p-5 shadow-sm">
-          <h3 className="text-sm font-bold text-purple-900 flex items-center gap-2 mb-4 bg-purple-50 p-2 rounded-lg inline-flex">
-            <Star className="w-4 h-4 text-purple-600" /> {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)} Tips
-          </h3>
-          <ul className="space-y-3">
-            <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
-              <span>{userLevel === 'fresher' ? 'Highlight academic projects and achievements' : 'Focus on quantifiable achievements and metrics'}</span>
-            </li>
-            <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
-              <span>{userLevel === 'fresher' ? 'Emphasize relevant coursework and skills' : 'Highlight leadership and cross-functional collaboration'}</span>
-            </li>
-            <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
-              <span>{userLevel === 'fresher' ? 'Include internships and volunteer work' : 'Ensure keywords match the job description (ATS friendly)'}</span>
-            </li>
-            <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
-              <span>Proofread carefully before submitting</span>
-            </li>
-          </ul>
-        </div>
-
       </div>
 
-      {/* MAIN CONTENT AREA */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-white/50">
+      {/* 3-COLUMN MAIN LAYOUT */}
+      <div className="flex-1 flex overflow-hidden max-w-[1600px] mx-auto w-full">
         
-        {/* Top Header */}
-        <div className="bg-white border-b border-gray-200 px-6 py-4 flex-shrink-0">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-5xl mx-auto w-full">
-            <div className="flex items-center gap-4">
-              <button onClick={onBack} className="text-sm font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1.5">
-                <ArrowLeft className="w-4 h-4" /> Back to Home
-              </button>
-              <div className="w-px h-8 bg-gray-200 hidden sm:block"></div>
-              <div className="flex items-center gap-3">
-                <div className="bg-blue-600 text-white p-1.5 rounded-lg">
-                  <Eye className="w-5 h-5" />
-                </div>
-                <div>
-                  <h1 className="text-lg font-black text-gray-900 leading-tight">Resume Preview</h1>
-                  <p className="text-xs text-gray-500 font-medium">Your professional resume is ready!</p>
-                </div>
-              </div>
+        {/* LEFT SIDEBAR (Templates) */}
+        <div className="hidden md:block w-[300px] lg:w-[340px] flex-shrink-0 bg-transparent p-4 lg:p-6 overflow-y-auto space-y-6">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="bg-teal-700 text-white p-5">
+              <h2 className="text-base font-bold flex items-center gap-2 mb-1">
+                <Lightbulb className="w-5 h-5" />
+                Smart Template Selection
+              </h2>
+              <p className="text-xs text-teal-100 opacity-90 leading-relaxed">
+                Templates optimized for {userLevel === 'fresher' ? 'fresh graduates' : 'professionals'}
+              </p>
             </div>
             
-            <div className="flex items-center gap-3">
-              <button onClick={onEdit} className="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-bold py-2.5 px-5 rounded-lg flex items-center gap-2 transition-colors">
-                <Edit2 className="w-4 h-4" /> Edit Resume
-              </button>
-              <button 
-                onClick={handleDownloadPDF}
-                disabled={isDownloading}
-                className="bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold py-2.5 px-6 rounded-lg flex items-center gap-2 shadow-md transition-colors"
-              >
-                <Download className="w-4 h-4" /> {isDownloading ? 'Downloading...' : 'Download PDF'}
-              </button>
+            <div className="p-4 lg:p-5">
+              {/* Detected Profile */}
+              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-5">
+                <h3 className="text-sm font-bold text-blue-800 flex items-center gap-2 mb-1.5">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  Detected Profile: {getProfileTitle()}
+                </h3>
+                <p className="text-xs text-blue-600/80 leading-relaxed">
+                  {getProfileDescription()}
+                </p>
+              </div>
+
+              {/* Template List */}
+              <div className="space-y-3 mb-4">
+                {visibleTemplates.map(template => (
+                  <button
+                    key={template.id}
+                    onClick={() => handleTemplateChange(template.id)}
+                    className={`w-full text-left p-3.5 rounded-lg flex justify-between items-center transition-all ${
+                      selectedTemplate === template.id
+                        ? 'bg-teal-700 text-white shadow-md'
+                        : 'bg-gray-50 text-gray-700 border border-gray-100 hover:bg-gray-100 hover:border-gray-200'
+                    }`}
+                  >
+                    <div>
+                      <div className={`text-sm font-bold ${selectedTemplate === template.id ? 'text-white' : 'text-gray-900'}`}>
+                        {template.name}
+                      </div>
+                      <div className={`text-xs mt-0.5 flex items-center gap-1.5 ${selectedTemplate === template.id ? 'text-teal-200' : 'text-gray-500'}`}>
+                        <FileText className="w-3.5 h-3.5" />
+                        {template.category.charAt(0).toUpperCase() + template.category.slice(1)}
+                      </div>
+                    </div>
+                    {template.recommended && (
+                      <Star className={`w-4 h-4 ${selectedTemplate === template.id ? 'text-yellow-400 fill-yellow-400' : 'text-gray-400'}`} />
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Show All Toggle */}
+              {!showAllTemplates && (
+                <button 
+                  onClick={() => setShowAllTemplates(true)}
+                  className="w-full text-center text-sm font-semibold text-blue-600 hover:text-blue-800 py-2 mb-4"
+                >
+                  Show All Templates
+                </button>
+              )}
+
+              {/* Photo Toggle */}
+              <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 mb-4">
+                <input
+                  type="checkbox"
+                  checked={includePhoto}
+                  onChange={(e) => setIncludePhoto(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                />
+                <div>
+                  <label className="text-sm font-bold text-gray-800 cursor-pointer">Include photo</label>
+                  <p className="text-xs text-gray-500 mt-0.5">Available for this template</p>
+                </div>
+              </div>
+
+              {/* Template Info Text */}
+              <div className="bg-blue-50/50 p-4 rounded-lg text-xs leading-relaxed text-blue-800 border border-blue-100/50">
+                <span className="font-bold">{currentTemplate.name}: </span>
+                A perfectly structured design optimized for your career level and industry standards.
+              </div>
             </div>
-          </div>
-          
-          {/* Sub-header Badges */}
-          <div className="flex flex-wrap items-center gap-3 mt-5 max-w-5xl mx-auto w-full">
-            <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
-              <CheckCircle className="w-3.5 h-3.5" /> Resume Complete
-            </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full">
-              <CheckCircle className="w-3.5 h-3.5" /> ATS Optimized
-            </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 px-3 py-1.5 rounded-full">
-              <CheckCircle className="w-3.5 h-3.5" /> {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)}-Optimized
-            </span>
-            <span className="flex items-center gap-1.5 text-xs font-bold text-yellow-700 bg-yellow-50 border border-yellow-200 px-3 py-1.5 rounded-full">
-              <FileText className="w-3.5 h-3.5" /> PDF Ready
-            </span>
           </div>
         </div>
 
-        {/* Canvas Scroll Area */}
+        {/* CENTER CANVAS AREA */}
         <div className="flex-1 overflow-auto p-4 sm:p-8 flex justify-center items-start">
           <div className="max-w-4xl w-full">
             
@@ -352,7 +274,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
             </div>
 
             {/* Bottom Download Bar */}
-            <div className="bg-gray-50 border border-gray-200 rounded-b-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="bg-white border border-gray-200 rounded-b-xl p-4 flex flex-col sm:flex-row justify-between items-center gap-4 shadow-sm mb-10">
               <div className="flex flex-wrap justify-center gap-4 text-xs font-bold text-gray-500">
                 <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-emerald-500"></div> A4 Format (210×297mm)</span>
                 <span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-blue-500"></div> High Resolution</span>
@@ -369,6 +291,85 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
             </div>
 
           </div>
+        </div>
+
+        {/* RIGHT SIDEBAR (Floating Info Cards) */}
+        <div className="hidden xl:block w-[300px] lg:w-[340px] flex-shrink-0 bg-transparent p-4 lg:p-6 overflow-y-auto space-y-6">
+          
+          {/* PDF Quality Guarantee Card */}
+          <div className="bg-white border border-indigo-100 rounded-xl p-5 shadow-sm">
+            <div className="bg-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center mb-4">
+              <FileText className="w-5 h-5 text-white" />
+            </div>
+            <h3 className="text-sm font-bold text-indigo-900 mb-3">PDF Quality Guarantee</h3>
+            <p className="text-xs text-gray-600 leading-relaxed mb-4">
+              The preview is <strong className="text-indigo-900">scaled for browser viewing</strong>. Your downloaded PDF will be in <strong className="text-indigo-900">perfect A4 format</strong> with professional spacing, fonts, and layout.
+            </p>
+            <div className="space-y-2 mb-4">
+              <div className="flex items-center gap-2 text-xs text-gray-700 font-medium">
+                <CheckCircle className="w-4 h-4 text-emerald-500" /> A4 Standard Format (210×297mm)
+              </div>
+              <div className="flex items-center gap-2 text-xs text-gray-700 font-medium">
+                <CheckCircle className="w-4 h-4 text-blue-500" /> ATS-Compatible Structure
+              </div>
+              <div className="flex items-center gap-2 text-xs text-gray-700 font-medium">
+                <Star className="w-4 h-4 text-purple-500" /> High-Resolution Output
+              </div>
+            </div>
+            <div className="bg-indigo-50 border border-indigo-100 text-indigo-800 text-xs font-bold p-3 rounded-lg flex items-start gap-2 shadow-sm">
+              <Lightbulb className="w-4 h-4 flex-shrink-0 text-yellow-500" />
+              <span>Pro Tip: Download and review your PDF for the true professional format</span>
+            </div>
+          </div>
+
+          {/* Ready to Apply Card */}
+          <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5 text-center shadow-sm">
+            <div className="bg-emerald-500 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+              <Download className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-base font-bold text-emerald-900 mb-2">Ready to Apply?</h3>
+            <p className="text-xs text-emerald-800/80 leading-relaxed px-2 mb-5">
+              Download your professional resume as a high-quality PDF, perfectly formatted for job applications.
+            </p>
+            <button
+              onClick={handleDownloadPDF}
+              disabled={isDownloading}
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow-md transition-colors flex items-center justify-center gap-2 mb-4"
+            >
+              <Download className="w-5 h-5" />
+              {isDownloading ? 'Generating...' : 'Download Free PDF'}
+            </button>
+            <div className="flex justify-center gap-4 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
+              <span className="flex items-center gap-1"><Check className="w-3 h-3" /> 100% Free</span>
+              <span className="flex items-center gap-1"><Check className="w-3 h-3" /> High Quality</span>
+            </div>
+          </div>
+
+          {/* Level Specific Tips */}
+          <div className="bg-white border border-purple-100 rounded-xl p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-purple-900 flex items-center gap-2 mb-4 bg-purple-50 p-2 rounded-lg inline-flex">
+              <Star className="w-4 h-4 text-purple-600" /> {userLevel.charAt(0).toUpperCase() + userLevel.slice(1)} Tips
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
+                <span>{userLevel === 'fresher' ? 'Highlight academic projects and achievements' : 'Focus on quantifiable achievements and metrics'}</span>
+              </li>
+              <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
+                <span>{userLevel === 'fresher' ? 'Emphasize relevant coursework and skills' : 'Highlight leadership and cross-functional collaboration'}</span>
+              </li>
+              <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
+                <span>{userLevel === 'fresher' ? 'Include internships and volunteer work' : 'Ensure keywords match the job description (ATS friendly)'}</span>
+              </li>
+              <li className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
+                <span>Proofread carefully before submitting</span>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
