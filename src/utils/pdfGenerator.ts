@@ -1,6 +1,6 @@
 import { ResumeData } from '../types/resume';
 
-const PDF_SERVER_URL = 'http://localhost:3001';
+const PDF_SERVER_URL = import.meta.env.PROD ? '' : 'http://localhost:3001';
 
 /**
  * Extracts all compiled CSS from the current page's stylesheets.
