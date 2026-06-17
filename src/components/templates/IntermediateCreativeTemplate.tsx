@@ -12,7 +12,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
   return (
     <div className="font-sans text-gray-800 bg-white max-w-[800px] mx-auto flex shadow-sm border border-gray-200 overflow-hidden" style={{ height: '1131px' }}>
       {/* Left Sidebar */}
-      <div className="w-1/3 bg-teal-800 text-white p-6 flex flex-col">
+      <div className="w-1/3 bg-teal-800 text-white p-6 flex flex-col justify-between">
         {showPhoto && (personalInfo?.photo || !personalInfo?.name) && (
           <div className="mb-6 flex justify-center">
             {personalInfo?.photo ? (
@@ -87,7 +87,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
       </div>
 
       {/* Right Content */}
-      <div className="w-2/3 p-6">
+      <div className="w-2/3 p-6 flex flex-col justify-between">
         <div className="mb-6">
           <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tight mb-2">
             {personalInfo?.name || '[Your Full Name]'}
