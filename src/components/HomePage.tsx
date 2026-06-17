@@ -1,5 +1,5 @@
-import React from 'react';
-import { FileText, Download, Smartphone, ArrowRight, Users, Clock, Shield, TrendingUp, Mail, Linkedin, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FileText, Download, Smartphone, ArrowRight, Users, Clock, Shield, TrendingUp, Mail, Linkedin, User, ChevronUp } from 'lucide-react';
 import BlogSection from './BlogSection';
 import FadeInSection from './FadeInSection';
 
@@ -9,6 +9,20 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       {/* Header */}
@@ -333,8 +347,19 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
                       </div>
         </FadeInSection>
       </footer>
+
+      {/* Scroll To Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all duration-300 z-50 hover:-translate-y-1"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp className="h-6 w-6" />
+        </button>
+      )}
       
-                  </div>
+    </div>
                   );
 };
 
