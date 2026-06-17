@@ -764,11 +764,11 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                           onChange={(e) => updateExperience(exp.id, 'description', e.target.value)}
                           className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                           rows={4}
-                          maxLength={500}
+                          maxLength={250}
                           placeholder="• Developed web applications using React and Node.js&#10;• Collaborated with team of 5 developers on various projects&#10;• Implemented responsive designs and improved user experience"
                         />
                         <div className="text-right mt-1">
-                          <span className="text-xs text-gray-500">{exp.description.length}/500 characters</span>
+                          <span className="text-xs text-gray-500">{exp.description.length}/250 characters</span>
                         </div>
                       </div>
                     </div>
@@ -843,11 +843,11 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                           onChange={(e) => updateProject(project.id, 'description', e.target.value)}
                           className="w-full p-2 sm:p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                           rows={3}
-                          maxLength={300}
+                          maxLength={150}
                           placeholder="Built a full-stack e-commerce platform with user authentication, product catalog, and payment integration..."
                         />
                         <div className="text-right mt-1">
-                          <span className="text-xs text-gray-500">{project.description.length}/300 characters</span>
+                          <span className="text-xs text-gray-500">{project.description.length}/150 characters</span>
                         </div>
                       </div>
                       <div className="sm:col-span-2">
@@ -890,7 +890,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                   onChange={(e) => updateSummary(e.target.value)}
                   className="w-full p-4 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
                   rows={4}
-                  maxLength={500}
+                  maxLength={350}
                   placeholder="Example: Recent Computer Science graduate with strong programming skills in Python and JavaScript. Passionate about developing innovative web applications and experienced in agile development methodologies. Seeking to leverage technical expertise and problem-solving abilities in a software development role."
                 />
                 <div className="mt-2 flex justify-between items-center">
@@ -898,7 +898,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                     💡 Tip: Include your degree, key skills, and career goals
                   </p>
                   <span className="text-xs text-gray-500">
-                    {data.summary.length}/500 characters
+                    {data.summary.length}/350 characters
                   </span>
                 </div>
               </div>

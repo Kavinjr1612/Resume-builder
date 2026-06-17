@@ -12,7 +12,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
   return (
     <div className="font-sans text-gray-800 bg-white max-w-[800px] mx-auto flex shadow-sm border border-gray-200" style={{ minHeight: '1056px' }}>
       {/* Left Sidebar */}
-      <div className="w-1/3 bg-teal-800 text-white p-8 flex flex-col">
+      <div className="w-1/3 bg-teal-800 text-white p-6 flex flex-col">
         {showPhoto && (personalInfo?.photo || !personalInfo?.name) && (
           <div className="mb-6 flex justify-center">
             {personalInfo?.photo ? (
@@ -25,7 +25,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
           </div>
         )}
 
-        <div className="mb-8">
+        <div className="mb-6">
           <h2 className="text-xl font-bold uppercase tracking-wider mb-4 border-b border-teal-600 pb-2">Contact</h2>
           <div className="space-y-3 text-sm text-teal-100">
             <div>{personalInfo?.email || '[Email Address]'}</div>
@@ -36,7 +36,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
           </div>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <h2 className="text-xl font-bold uppercase tracking-wider mb-4 border-b border-teal-600 pb-2">Skills</h2>
           {technicalSkills && technicalSkills.length > 0 && (
             <div className="mb-4">
@@ -87,27 +87,27 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
       </div>
 
       {/* Right Content */}
-      <div className="w-2/3 p-8">
-        <div className="mb-8">
+      <div className="w-2/3 p-6">
+        <div className="mb-6">
           <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tight mb-2">
             {personalInfo?.name || '[Your Full Name]'}
           </h1>
           <h2 className="text-xl text-teal-700 font-medium tracking-wide">Professional Profile</h2>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <p className="text-sm leading-relaxed text-gray-600 text-justify">
             {summary || '[Write a compelling professional summary highlighting your core expertise, intermediate experience, and what unique value you bring to your next role.]'}
           </p>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2 flex items-center">
             <span className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mr-3 text-sm">Briefcase</span>
             Work Experience
           </h2>
           {experience?.length > 0 ? (
-            <div className="space-y-6">
+            <div className="space-y-4">
               {experience.map(exp => (
                 <div key={exp.id} className="relative">
                   <div className="flex justify-between items-baseline mb-1">
