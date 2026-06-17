@@ -644,8 +644,8 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                         Start Date
                       </label>
                       <input
-                        type="month"
-                        onClick={(e) => 'showPicker' in HTMLInputElement.prototype && e.currentTarget.showPicker()}
+                        type="text"
+                        placeholder="e.g. Sep 2023 or Present"
                         value={edu.startDate}
                         onChange={(e) => updateEducation(edu.id, 'startDate', e.target.value)}
                         className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
@@ -656,8 +656,8 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                         End Date
                       </label>
                       <input
-                        type="month"
-                        onClick={(e) => 'showPicker' in HTMLInputElement.prototype && e.currentTarget.showPicker()}
+                        type="text"
+                        placeholder="e.g. Sep 2023 or Present"
                         value={edu.endDate}
                         onChange={(e) => updateEducation(edu.id, 'endDate', e.target.value)}
                         className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
@@ -746,8 +746,8 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                           Start Date
                         </label>
                         <input
-                          type="month"
-                        onClick={(e) => 'showPicker' in HTMLInputElement.prototype && e.currentTarget.showPicker()}
+                          type="text"
+                        placeholder="e.g. Sep 2023 or Present"
                         value={exp.startDate}
                           onChange={(e) => updateExperience(exp.id, 'startDate', e.target.value)}
                           className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
@@ -759,8 +759,8 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                         </label>
                         <div className="space-y-2">
                           <input
-                            type="month"
-                        onClick={(e) => 'showPicker' in HTMLInputElement.prototype && e.currentTarget.showPicker()}
+                            type="text"
+                        placeholder="e.g. Sep 2023 or Present"
                         value={exp.endDate}
                             onChange={(e) => updateExperience(exp.id, 'endDate', e.target.value)}
                             className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
