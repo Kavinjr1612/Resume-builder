@@ -178,45 +178,6 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-display text-center mb-8 sm:mb-12">
-            How It Works - Simple as 1-2-3
-          </h3>
-          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center">
-              <div className="bg-blue-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold tracking-tight text-lg sm:text-xl">
-                1
-              </div>
-              <h4 className="text-lg sm:text-xl font-semibold text-slate-900 font-display mb-2">Fill Your Details</h4>
-              <p className="text-slate-600 text-sm sm:text-base">
-                Enter your personal information, education, experience, and projects in our easy-to-use form
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-teal-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold tracking-tight text-lg sm:text-xl">
-                2
-              </div>
-              <h4 className="text-lg sm:text-xl font-semibold text-slate-900 font-display mb-2">Choose Template</h4>
-              <p className="text-slate-600 text-sm sm:text-base">
-                Select from our collection of professional templates designed for different career paths
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-purple-600 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold tracking-tight text-lg sm:text-xl">
-                3
-              </div>
-              <h4 className="text-lg sm:text-xl font-semibold text-slate-900 font-display mb-2">Download & Apply</h4>
-              <p className="text-slate-600 text-sm sm:text-base">
-                Preview your resume and download as PDF ready for job applications
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
       {/* Blog Section */}
       <div id="blog">
         <BlogSection onReadMore={onReadMore} />
