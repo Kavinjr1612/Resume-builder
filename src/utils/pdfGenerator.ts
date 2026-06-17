@@ -56,7 +56,7 @@ export const generatePDF = async (
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.error || `Server error: ${response.status}`);
+    throw new Error(errorData.details ? `${errorData.error}: ${errorData.details}` : (errorData.error || `Server error: ${response.status}`));
   }
 
   // 3. Receive the PDF as a blob and trigger instant download
