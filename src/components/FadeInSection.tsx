@@ -23,8 +23,9 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0, clas
             setTimeout(() => {
               setVisible(true);
             }, delay);
-            // Once it's visible, stop observing it so it doesn't fade out again
-            observer.unobserve(entry.target);
+          } else {
+            // Fade out when scrolling away so it replays
+            setVisible(false);
           }
         });
       },
