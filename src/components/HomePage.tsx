@@ -32,7 +32,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
             </div>
             <div className="flex items-center space-x-4">
               <a 
-                href="mailto:karaja1612@gmail.com" 
+                href="#connect-section"
                 className="hidden sm:flex items-center space-x-2 text-slate-600 hover:text-blue-600 transition-colors text-sm font-medium"
               >
                 <Mail className="h-4 w-4" />
@@ -316,7 +316,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
                 <li>Success Stories</li>
               </ul>
             </div>
-            <div>
+            <div id="connect-section">
               <h4 className="text-sm font-semibold mb-6 text-slate-400 uppercase tracking-wider">Connect</h4>
               <ul className="space-y-4 text-gray-300 text-sm sm:text-base">
                 <li className="flex items-start space-x-3">
