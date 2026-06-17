@@ -112,7 +112,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
       ...data,
       personalInfo: { ...data.personalInfo, [field]: value }
     });
-    
+
     if (field === 'name' && value) {
       trackResumeEvents.completePersonalInfo();
     }
@@ -394,19 +394,19 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
               <h1 className="text-lg sm:text-2xl font-bold text-slate-900 font-display">Free Resume Builder</h1>
             </div>
             <div className="flex space-x-3">
-                <button
-                  onClick={handleAutofill}
-                  data-autofill-btn
-                  className="bg-teal-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-teal-700 transition-colors flex items-center space-x-2 text-sm sm:text-base shadow-sm"
-                >
-                  <Zap className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="hidden sm:inline">Autofill Example</span>
-                  <span className="sm:hidden">Autofill</span>
-                </button>
-                <button
-                  onClick={handlePreview}
-                  className="bg-blue-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full hover:bg-blue-700 hover:shadow-md transition-all font-medium flex items-center space-x-2 text-sm sm:text-base shadow-sm"
-                >
+              <button
+                onClick={handleAutofill}
+                data-autofill-btn
+                className="bg-teal-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-teal-700 transition-colors flex items-center space-x-2 text-sm sm:text-base shadow-sm"
+              >
+                <Zap className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Autofill Example</span>
+                <span className="sm:hidden">Autofill</span>
+              </button>
+              <button
+                onClick={handlePreview}
+                className="bg-blue-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full hover:bg-blue-700 hover:shadow-md transition-all font-medium flex items-center space-x-2 text-sm sm:text-base shadow-sm"
+              >
                 <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>Preview</span>
               </button>
@@ -419,11 +419,10 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 min-w-0 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
-                  activeTab === tab.id
+                className={`flex-1 min-w-0 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${activeTab === tab.id
                     ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-slate-600 hover:text-slate-900 font-display'
-                }`}
+                  }`}
               >
                 <span className="hidden sm:inline">{tab.label}</span>
                 <span className="sm:hidden">{tab.shortLabel}</span>
@@ -447,7 +446,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                 <p className="text-blue-700 text-xs sm:text-sm mb-3 sm:mb-4">
                   Add a professional photo to make your resume stand out. Supported by Minimal, Executive, Academic, and Technical templates.
                 </p>
-                
+
                 {data.personalInfo.photo ? (
                   <div className="flex items-center space-x-4">
                     <div className="relative">
@@ -510,7 +509,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                     value={data.personalInfo.email}
                     onChange={(e) => updatePersonalInfo('email', e.target.value)}
                     className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
-                    placeholder="karaja1612@gmail.com"
+                    placeholder="ShreyanshSingh@gmail.com"
                   />
                 </div>
                 <div>
@@ -546,7 +545,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                     value={data.personalInfo.linkedin}
                     onChange={(e) => updatePersonalInfo('linkedin', e.target.value)}
                     className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
-                    placeholder="https://linkedin.com/in/kavinesh-s-r"
+                    placeholder="https://linkedin.com/in/ShreyanshSingh"
                   />
                 </div>
                 <div>
@@ -558,7 +557,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                     value={data.personalInfo.github}
                     onChange={(e) => updatePersonalInfo('github', e.target.value)}
                     className="w-full p-2 sm:p-3 border border-slate-300 bg-white rounded-md focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-colors shadow-sm text-sm sm:text-base"
-                    placeholder="https://github.com/kavinesh-s-r"
+                    placeholder="https://github.com/ShreyanshSingh"
                   />
                 </div>
               </div>
@@ -960,7 +959,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                 <p className="text-green-700 text-sm mb-4">
                   Add your technical skills like programming languages, frameworks, tools, and software.
                 </p>
-                
+
                 {/* Add New Technical Skill */}
                 <div className="flex space-x-2 mb-4">
                   <input
@@ -1033,7 +1032,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ data, onUpdateData, onBack, onP
                 <p className="text-purple-700 text-sm mb-4">
                   Add your soft skills like communication, leadership, teamwork, and personal qualities.
                 </p>
-                
+
                 {/* Add New Soft Skill */}
                 <div className="flex space-x-2 mb-4">
                   <input
