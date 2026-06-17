@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
             <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="flex items-center space-x-2">
                 <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
-                <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900 font-display hidden sm:block">Building You</h1>
+                <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-slate-900 font-display hidden sm:block">Building Resume</h1>
               </div>
               <a
                 href="https://digitalheroesco.com"
@@ -79,7 +79,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto px-4">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto px-4">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold tracking-tight text-teal-600">95%</div>
                 <div className="text-xs sm:text-sm text-slate-600">Success Rate</div>
@@ -104,7 +104,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
         <FadeInSection>
           <div className="max-w-6xl mx-auto">
               <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 font-display text-center mb-4">
-                Why Choose Building You's Free Resume Builder?
+                Why Choose Building Resume's Free Resume Builder?
               </h3>
               <p className="text-slate-600 text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
                 Join thousands of students and freshers who've successfully landed their dream jobs using our professional resume builder
@@ -240,7 +240,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
                         Ready to Build Your Dream Resume?
                       </h3>
                       <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 px-4">
-                        Join over 50,000 students who've successfully landed their dream jobs with Building You's free resume builder
+                        Join over 50,000 students who've successfully landed their dream jobs with Building Resume's free resume builder
                       </p>
                       <button
                         onClick={onGetStarted}
@@ -264,7 +264,7 @@ const HomePage: React.FC<HomePageProps> = ({ onGetStarted, onReadMore }) => {
                           <div>
                             <div className="flex items-center space-x-2 mb-6">
                               <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-blue-500" />
-                              <span className="text-xl sm:text-2xl font-bold tracking-tight tracking-tight">Building You</span>
+                              <span className="text-xl sm:text-2xl font-bold tracking-tight tracking-tight">Building Resume</span>
                             </div>
                             <p className="text-slate-400 mb-6 text-sm sm:text-base leading-relaxed">
                               Empowering students and freshers to create professional resumes.

@@ -43,8 +43,8 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0, clas
   return (
     <div
       ref={domRef}
-      className={`transition-all duration-[800ms] ease-out transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      className={`transition-opacity duration-[1000ms] ease-in-out ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       } ${className}`}
     >
       {children}
