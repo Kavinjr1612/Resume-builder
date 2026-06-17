@@ -1,4 +1,5 @@
 import React from 'react';
+import { Briefcase, Code } from 'lucide-react';
 import { ResumeData } from '../../types/resume';
 
 interface Props {
@@ -12,7 +13,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
   return (
     <div className="font-sans text-gray-800 bg-white max-w-[800px] mx-auto flex shadow-sm border border-gray-200 overflow-hidden" style={{ height: '1131px' }}>
       {/* Left Sidebar */}
-      <div className="w-1/3 bg-teal-800 text-white p-6 flex flex-col justify-between">
+      <div className="w-1/3 bg-teal-800 text-white p-6 flex flex-col">
         {showPhoto && (personalInfo?.photo || !personalInfo?.name) && (
           <div className="mb-6 flex justify-center">
             {personalInfo?.photo ? (
@@ -87,7 +88,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
       </div>
 
       {/* Right Content */}
-      <div className="w-2/3 p-6 flex flex-col justify-between">
+      <div className="w-2/3 p-6">
         <div className="mb-6">
           <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tight mb-2">
             {personalInfo?.name || '[Your Full Name]'}
@@ -103,7 +104,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
 
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2 flex items-center">
-            <span className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mr-3 text-sm">Briefcase</span>
+            <span className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mr-3"><Briefcase size={16} /></span>
             Work Experience
           </h2>
           {experience?.length > 0 ? (
@@ -135,7 +136,7 @@ const IntermediateCreativeTemplate: React.FC<Props> = ({ data, showPhoto }) => {
 
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2 flex items-center">
-            <span className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mr-3 text-sm">Code</span>
+            <span className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center mr-3"><Code size={16} /></span>
             Key Projects
           </h2>
           {projects?.length > 0 ? (
