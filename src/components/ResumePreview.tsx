@@ -136,10 +136,10 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
       </div>
 
       {/* 3-COLUMN MAIN LAYOUT */}
-      <div className="flex-1 flex overflow-hidden max-w-[1600px] mx-auto w-full">
+      <div className="flex-1 flex overflow-hidden w-full">
         
         {/* LEFT SIDEBAR (Templates) */}
-        <div className="hidden md:block w-[300px] lg:w-[340px] flex-shrink-0 bg-transparent p-4 lg:p-6 overflow-y-auto space-y-6">
+        <div className="hidden md:block w-[280px] lg:w-[300px] xl:w-[320px] flex-shrink-0 bg-transparent p-4 overflow-y-auto space-y-5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="bg-teal-700 text-white p-5">
               <h2 className="text-base font-bold flex items-center gap-2 mb-1">
@@ -225,10 +225,10 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
         </div>
 
         {/* CENTER CANVAS AREA */}
-        <div className="flex-1 overflow-auto p-4 sm:p-8 flex justify-center items-start relative">
+        <div className="flex-1 overflow-auto p-4 sm:p-6 flex justify-center items-start relative [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           
           {/* Zoom Controls (Floating Left) */}
-          <div className="hidden lg:flex flex-col gap-3 sticky top-4 left-4 z-10 bg-white p-2 rounded-xl shadow-lg border border-gray-200 h-fit mr-6 flex-shrink-0">
+          <div className="hidden lg:flex flex-col gap-3 sticky top-4 left-0 z-10 bg-white p-2 rounded-xl shadow-lg border border-gray-200 h-fit mr-4 flex-shrink-0">
             <button onClick={handleZoomIn} className="p-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors" title="Zoom In">
               <ZoomIn className="w-5 h-5" />
             </button>
@@ -245,7 +245,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
             </div>
           </div>
 
-          <div className="max-w-4xl w-full">
+          <div className="w-full max-w-5xl">
             
             {/* White Container Header */}
             <div className="bg-indigo-50/50 rounded-t-xl border border-indigo-100 p-6 flex justify-between items-start mb-0 border-b-0">
@@ -317,7 +317,7 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
         </div>
 
         {/* RIGHT SIDEBAR (Floating Info Cards) */}
-        <div className="hidden xl:block w-[300px] lg:w-[340px] flex-shrink-0 bg-transparent p-4 lg:p-6 overflow-y-auto space-y-6">
+        <div className="hidden xl:block w-[280px] lg:w-[300px] xl:w-[320px] flex-shrink-0 bg-transparent p-4 overflow-y-auto space-y-5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           
           {/* PDF Quality Guarantee Card */}
           <div className="bg-white border border-indigo-100 rounded-xl p-5 shadow-sm">
@@ -342,29 +342,6 @@ const ResumePreview: React.FC<ResumePreviewProps> = ({ data, onBack, onEdit }) =
             <div className="bg-indigo-50 border border-indigo-100 text-indigo-800 text-xs font-bold p-3 rounded-lg flex items-start gap-2 shadow-sm">
               <Lightbulb className="w-4 h-4 flex-shrink-0 text-yellow-500" />
               <span>Pro Tip: Download and review your PDF for the true professional format</span>
-            </div>
-          </div>
-
-          {/* Ready to Apply Card */}
-          <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-5 text-center shadow-sm">
-            <div className="bg-emerald-500 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
-              <Download className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-base font-bold text-emerald-900 mb-2">Ready to Apply?</h3>
-            <p className="text-xs text-emerald-800/80 leading-relaxed px-2 mb-5">
-              Download your professional resume as a high-quality PDF, perfectly formatted for job applications.
-            </p>
-            <button
-              onClick={handleDownloadPDF}
-              disabled={isDownloading}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow-md transition-colors flex items-center justify-center gap-2 mb-4"
-            >
-              <Download className="w-5 h-5" />
-              {isDownloading ? 'Generating...' : 'Download Free PDF'}
-            </button>
-            <div className="flex justify-center gap-4 text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
-              <span className="flex items-center gap-1"><Check className="w-3 h-3" /> 100% Free</span>
-              <span className="flex items-center gap-1"><Check className="w-3 h-3" /> High Quality</span>
             </div>
           </div>
 
