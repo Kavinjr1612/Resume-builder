@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './components/HomePage';
+import HowItWorksIntro from './components/HowItWorksIntro';
 import ResumeForm from './components/ResumeForm';
 import ResumePreview from './components/ResumePreview';
 import BlogPost from './components/BlogPost';
 import { useResumeData } from './hooks/useResumeData';
 import { trackPageView } from './utils/analytics';
 
-type AppState = 'home' | 'form' | 'preview' | 'blog-post';
+type AppState = 'home' | 'intro' | 'form' | 'preview' | 'blog-post';
 
 function App() {
   const [currentView, setCurrentView] = useState<AppState>('home');
@@ -17,6 +18,7 @@ function App() {
     // Track page views
     const pageMap = {
       home: '/',
+      intro: '/intro',
       form: '/resume-builder',
       preview: '/resume-preview',
       'blog-post': `/blog/${currentBlogPost}`
@@ -26,6 +28,10 @@ function App() {
   }, [currentView, currentBlogPost]);
 
   const handleGetStarted = () => {
+    setCurrentView('intro');
+  };
+
+  const handleContinueFromIntro = () => {
     setCurrentView('form');
   };
 
@@ -43,7 +49,7 @@ function App() {
 
   const handleStartNew = () => {
     resetData();
-    setCurrentView('form');
+    setCurrentView('intro');
   };
 
   const handleReadMore = (postId: string) => {
@@ -66,6 +72,9 @@ function App() {
     case 'home':
       return <HomePage onGetStarted={handleGetStarted} onReadMore={handleReadMore} />;
     
+    case 'intro':
+      return <HowItWorksIntro onContinue={handleContinueFromIntro} />;
+      
     case 'form':
       return (
         <ResumeForm
