@@ -1,7 +1,6 @@
 import React from 'react';
 import { FileText, Download, Smartphone, ArrowRight, Users, Clock, Shield, TrendingUp, Mail, Linkedin, User } from 'lucide-react';
 import BlogSection from './BlogSection';
-import ComparisonSection from './ComparisonSection';
 import FadeInSection from './FadeInSection';
 
 interface HomePageProps {
