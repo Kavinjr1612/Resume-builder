@@ -2,8 +2,6 @@
 
 A modern, completely free, and lightning-fast resume builder designed to help students, freshers, and professionals craft stunning ATS-friendly resumes in minutes. Built with React, Tailwind CSS, and powered by serverless PDF generation via Vercel and Puppeteer.
 
-![Building Resume Preview](https://via.placeholder.com/1200x600/2563eb/ffffff?text=Building+Resume+-+Free+ATS-Friendly+Resume+Builder)
-
 ## ✨ Features
 
 - **100% Free & No Sign-ups:** Start building immediately without creating an account or handing over personal data.
